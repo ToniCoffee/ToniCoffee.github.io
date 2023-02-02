@@ -1,0 +1,32 @@
+.contact-section {
+  background-color: #333;
+  padding: 3em 0;
+}
+
+.contact-info {
+  color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-info ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info ul li {
+  display: flex;
+  padding: .25em 0;
+}
+
+.contact-info label {
+  font-weight: bold;
+  font-style: italic;
+  width: 20%;
+  min-width: 20%;
+  margin-right: 1em;
+}
+
+.contact-info a {
+  flex-grow: 1;
+}

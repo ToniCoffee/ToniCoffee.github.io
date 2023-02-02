@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ToniCoffee | Web Developer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="Hi! I'm ToniCoffee a Web Developer and here you can find all my web development projects ❤, and contact information about me.">
+  <meta name="keywords" content="web, web developer, web project, web projects, developer, html, javascript, css">
+  <meta name="author" content="ToniCoffee">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <link rel="preload" href="./public/logos/cartoon-user.webp" as="image">
+  <link rel="preload" href="./public/logos/phone-modern.svg" as="image">
+  <link rel="preload" href="./public/logos/github.svg" as="image">
+  <link rel="preload" href="./public/logos/gmail-icon.svg" as="image">
+  <link rel="preload" href="./public/logos/linkedin.svg" as="image">
+
+  <link rel="preload" href="./public/logos/web.svg" as="image">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-decoration: none;
+      color: unset;
+    }
+
+    body {
+      font-size: min(3vw, 1rem);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: rgb(249, 251, 255);
+    }
+
+    .section-title {
+      width: 100%;
+      padding: 0 0 .5em 0;
+      color: #ff0055;
+      font-size: 2.5em;
+      font-style: italic;
+    }
+
+    header::before {
+      content: '';
+      background: linear-gradient(135deg, rgb(89, 0, 255) 0%, rgb(27, 0, 72) 100%);
+      display: block;
+      width: 100%;
+      height: 50%;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: -1;
+    }
+
+    header {
+      width: 100vw;
+      height: 100vh;
+      max-width: 100%;
+      position: relative;
+      display: grid;
+      grid-template-rows: 17.5% 17.5% 30% 17.5% 17.5%;
+    }
+
+    header::after {
+      content: '';
+      width: 15%;
+      height: 5px;
+      background-color: #777;
+      border-radius: 7px;
+      position: absolute;
+      left: 50%;
+      bottom: 25px;
+      transform: translate(-50%, 0);
+    }
+
+    .header-nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      color: #f7f7f7;
+      font-weight: bold;
+    }
+
+    .header-nav {
+      display: flex;
+    }
+
+    .header-nav > ul {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1em;
+    }
+
+    .header-nav > ul > li {
+      padding: 0 .25em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-nav-link {
+      border: 1px solid transparent;
+      border-radius: 7px;
+      width: min(10vw, 42px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-nav-link:hover {
+      border: 1px solid #ff0055;
+      box-shadow: 2px 2px 2px #333;
+    }
+
+    .header-nav-link-img {
+      padding: .25em .5em;
+      border-radius: inherit;
+      width: inherit;
+      aspect-ratio: 1;
+    }
+
+    .header-presentation {
+      color: #eee;
+      text-align: center;
+      font-size: 1.25em;
+    }
+
+    .header-presentation > h2 {
+      color: #ff0055;
+    }
+
+    .header-avatar {
+      padding: 1em;
+      text-align: center;
+    }
+
+    .header-avatar img {
+      border: 1px solid green;
+      background: linear-gradient(#fff 50%, #333 50%);
+      height: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 999999px;
+      padding: .25em;
+    }
+
+    .header-info {
+      color: #333;
+      width: 80%;
+      margin: 0 auto;
+      align-self: center;
+    }
+
+    .menu-container {
+      flex-grow: 1;
+      padding: 1em 1em;
+    }
+
+    .menu-wrapper {
+      border: 1px solid #aaa;
+      background-color: #333;
+      border-radius: 5px;
+      margin: .5em 0 0 0;
+      padding: 0 .25em;
+      width: min(calc(8vw - .5em), calc(35px - .5em));
+      height: min(calc(8vw - .5em), calc(35px - .5em));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      position: relative;
+    }
+
+    .menu-bar {
+      background-color: #f7f7f7;
+      border: 1px solid #f7f7f7;
+      transition: .25s;
+    }
+
+    .menu-label {
+      position: absolute;
+      left: 0%;
+      top: 0%;
+      width: 100%;
+      height: 100%;
+    }
+
+    .menu-input {
+      position: absolute;
+      top: -500%;
+      left: 0%;
+    }
+
+    .menu-input:checked ~ .menu-one {
+      position: absolute;
+      rotate: 45deg;
+      width: calc(100% - .5em);
+      transition: .25s;
+    }
+
+    .menu-input:checked ~ .menu-two {
+      opacity: 0;
+      transition: .25s;
+    }
+
+    .menu-input:checked ~ .menu-three {
+      position: absolute;
+      rotate: -45deg;
+      width: calc(100% - .5em);
+      transition: .25s;
+    }
+
+    .menu-input:checked ~ .menu {
+      display: block;
+    }
+
+    .menu {
+      display: none;
+      border-radius: 3px;
+      position: absolute;
+      top: 100%;
+      left: 0%;
+      background-color: #aaa;
+      color: #777;
+    }
+
+    .menu ul {
+      width: max-content;
+      display: flex;
+      flex-direction: column;
+      border-radius: 3px;
+      background-color: #f7f7f7;
+      margin: .5em;
+    }
+
+    .menu ul li {
+      display: flex;
+    }
+
+    .menu ul li a {
+      flex-grow: 1;
+      border: 1px solid transparent;
+      padding: .5em 1em;
+    }
+
+    .menu ul li a:hover {
+      border: 1px solid #ff0055;
+      color: #ff0055;
+    }
+
+    .menu-landscape {
+      display: none;
+      padding: 1em;
+    }
+
+    .menu-landscape ul { 
+      display: flex;
+      padding: .25em 0; 
+    }
+
+    .menu-landscape ul li {
+      display: flex;
+      margin: 0 .25em;
+    }
+
+    .menu-landscape ul li a {
+      border: 1px solid transparent;
+      border-radius: 5px;
+      padding: .5em;
+    }
+
+    .menu-landscape ul li a:hover {
+      border: 1px solid #ff0055;
+      box-shadow: 2px 2px 2px #333;
+    }
+  </style>
+
+  <link rel="preload" href="src/styles/components/theme-default.css" as="style">
+  <link rel="preload" href="src/styles/components/thunder-coffee.css" as="style">
+  <link rel="preload" href="src/styles/components/skills.css" as="style">
+  <link rel="preload" href="src/styles/components/projects.css" as="style">
+  <link rel="preload" href="src/styles/components/contact.css" as="style">
+  <link rel="preload" href="src/styles/components/footer.css" as="style">
+  <link rel="preload" href="src/styles/components/media-queries.css" as="style">
+
+  <link rel="stylesheet" href="src/styles/components/theme-default.css">
+  <link rel="stylesheet" href="src/styles/components/thunder-coffee.css">
+  <link rel="stylesheet" href="src/styles/components/skills.css"> 
+  <link rel="stylesheet" href="src/styles/components/projects.css">
+  <link rel="stylesheet" href="src/styles/components/contact.css">
+  <link rel="stylesheet" href="src/styles/components/footer.css">
+  <link rel="stylesheet" href="src/styles/components/media-queries.css" media="screen and (orientation: landscape)">
+</head>
+<body> 
+  <header>
+    <div class="header-nav-wrapper">
+      <nav class="menu-landscape">
+        <ul>
+          <li><a href="#skills-section">Skills</a></li>
+          <li><a href="#projects-section">Projects</a></li>
+          <li><a href="#contact-section">Contact</a></li>
+          <li><a href="#">Curriculum Vitae</a></li>
+        </ul>
+      </nav>
+      <div class="menu-container">
+        <div class="menu-wrapper">
+          <label class="menu-label" for="check-box"></label>
+          <input class="menu-input" type="checkbox" name="check-box" id="check-box">
+          <div class="menu-bar menu-one"></div>
+          <div class="menu-bar menu-two"></div>
+          <div class="menu-bar menu-three"></div>
+          <nav class="menu">
+            <ul>
+              <li><a href="#skills-section">Skills</a></li>
+              <li><a href="#projects-section">Projects</a></li>
+              <li><a href="#contact-section">Contact</a></li>
+              <li><a href="#">Curriculum Vitae</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <nav class="header-nav">
+        <ul>
+          <li><a class="header-nav-link" href="tel:690-024-693"><img class="header-nav-link-img" src="./public/logos/phone-modern.svg" alt="phone logo" ></a></li>
+          <li><a class="header-nav-link" href="https://github.com/tonicoffee" target="_blank"><img class="header-nav-link-img" src="./public/logos/github.svg" alt="github logo" ></a></li>
+          <li><a class="header-nav-link" href="mailto:ntnlpzsgr@gmail.com" target="_blank"><img class="header-nav-link-img" src="./public/logos/gmail-icon.svg" alt="gmail logo" ></a></li>
+          <li><a class="header-nav-link" href="https://www.linkedin.com/in/tonicoffee" target="_blank"><img class="header-nav-link-img" src="./public/logos/linkedin.svg" alt="linkedin logo" ></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-presentation wrapper">
+      <h2>Toni López Segura</h2>
+      <h1>Web Developer</h1> 
+    </div>
+    <div class="header-avatar wrapper">
+      <img src="./public/logos/cartoon-user.webp" alt="user logo">
+    </div>
+    <div class="header-presentation header-info wrapper">
+      <p>Here you can find all my development projects by check out next sections.</p>
+    </div>
+  </header>
+
+  <section id="skills-section" class="skills-section">
+    <div class="skills-section-wrapper wrapper">
+      <h2 class="section-title">My Skills</h2>
+      <article class="skill-logos">
+        <img class="skill-logo" src="./public/logos/html-5.svg" alt="html logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/css-3.svg" alt="css logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/javascript.svg" alt="javascript logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/react.svg" alt="react logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/angular.svg" alt="angular logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/nodejs-1.svg" alt="nodejs logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/deno.svg" alt="deno logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/markdown.svg" alt="markdown logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/php.svg" alt="php logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/express.svg" alt="express logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/svelte.svg" alt="svelte logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/vue.svg" alt="vue logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/c.svg" alt="c logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/cpp.svg" alt="cpp logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/csharp.svg" alt="csharp logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/java.svg" alt="java logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/python.svg" alt="python logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/kotlin.svg" alt="kotlin logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/sql.svg" alt="sql logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/mysql.svg" alt="mysql logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/sqlite.svg" alt="sqlite logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/postgresql.svg" alt="postgresql logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/mariadb.svg" alt="mariadb logo" loading="lazy">
+        <img class="skill-logo" src="./public/logos/mongodb.svg" alt="mongodb logo" loading="lazy">
+      </article>
+      <article class="skill-article">
+        <label class="skill"><span class="skill-title">Html</span><progress class="skill-progress-bar" max="100" value="50"></progress></label>
+        <label class="skill"><span class="skill-title">Javascript</span><progress class="skill-progress-bar" max="100" value="50"></progress></label>
+        <label class="skill"><span class="skill-title">Css</span><progress class="skill-progress-bar" max="100" value="50"></progress></label>
+        <label class="skill"><span class="skill-title">Php</span><progress class="skill-progress-bar" max="100" value="5"></progress></label>
+        <label class="skill"><span class="skill-title">NodeJs</span><progress class="skill-progress-bar" max="100" value="5"></progress></label>
+        <label class="skill"><span class="skill-title">Express</span><progress class="skill-progress-bar" max="100" value="5"></progress></label>
+        <label class="skill"><span class="skill-title">React</span><progress class="skill-progress-bar" max="100" value="50"></progress></label>
+        <label class="skill"><span class="skill-title">Angular</span><progress class="skill-progress-bar" max="100" value="10"></progress></label>
+        <label class="skill"><span class="skill-title">Svelte</span><progress class="skill-progress-bar" max="100" value="5"></progress></label>
+        <label class="skill"><span class="skill-title">Vue</span><progress class="skill-progress-bar" max="100" value="0"></progress></label>
+        <label class="skill"><span class="skill-title">C</span><progress class="skill-progress-bar" max="100" value="12"></progress></label>
+        <label class="skill"><span class="skill-title">C++</span><progress class="skill-progress-bar" max="100" value="12"></progress></label>
+        <label class="skill"><span class="skill-title">C#</span><progress class="skill-progress-bar" max="100" value="50"></progress></label>
+        <label class="skill"><span class="skill-title">Python</span><progress class="skill-progress-bar" max="100" value="30"></progress></label>
+        <label class="skill"><span class="skill-title">Java</span><progress class="skill-progress-bar" max="100" value="20"></progress></label>
+        <label class="skill"><span class="skill-title">Kotlin</span><progress class="skill-progress-bar" max="100" value="5"></progress></label>
+        <label class="skill"><span class="skill-title">Sql</span><progress class="skill-progress-bar" max="100" value="5"></progress></label>
+        <label class="skill"><span class="skill-title">MySql</span><progress class="skill-progress-bar" max="100" value="5"></progress></label>
+        <label class="skill"><span class="skill-title">SqlLite3</span><progress class="skill-progress-bar" max="100" value="5"></progress></label>
+        <label class="skill"><span class="skill-title">Postgress</span><progress class="skill-progress-bar" max="100" value="5"></progress></label>
+        <label class="skill"><span class="skill-title">MariaDB</span><progress class="skill-progress-bar" max="100" value="5"></progress></label>
+        <label class="skill"><span class="skill-title">MongoDB</span><progress class="skill-progress-bar" max="100" value="5"></progress></label>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects-section" class="projects-section">
+    <div class="wrapper">
+      <h2 class="section-title">My Projects</h2>
+      <div class="projects-section-wrapper">
+        <article class="project-article">
+          <h3 class="project-title">Giffy - React</h3>
+          <div class="project-img-wrapper">
+            <img class="project-img" src="./public/project-imgs/giffy.webp" alt="test logo" loading="lazy">
+            <div class="project-img-links">
+              <a class="project-img-link" href="https://github.com/ToniCoffee/react-giffy" target="_blank"><img src="./public/logos/github.svg" alt="github logo" loading="lazy"></a>
+              <a class="project-img-link" href="https://tonicoffee.github.io/react-giffy/" target="_blank"><img src="./public/logos/web.svg" alt="github logo" loading="lazy"></a>
+            </div>
+          </div>
+          <div class="project-description-wrapper">
+            <p class="project-description txt-ellipse">A giffy page clone for learning purposes.</p>
+          </div>
+        </article>
+        <article class="project-article">
+          <h3 class="project-title">Contact Manager - React</h3>
+          <div class="project-img-wrapper">
+            <img class="project-img" src="./public/project-imgs/contact-manager.webp" alt="test logo" loading="lazy">
+            <div class="project-img-links">
+              <a class="project-img-link" href="https://github.com/ToniCoffee/react-contact-manager" target="_blank"><img src="./public/logos/github.svg" alt="github logo" loading="lazy"></a>
+              <a class="project-img-link" href="https://tonicoffee.github.io/react-contact-manager/" target="_blank"><img src="./public/logos/web.svg" alt="github logo" loading="lazy"></a>
+            </div>
+          </div>
+          <div class="project-description-wrapper">
+            <p class="project-description txt-ellipse">Simple Contact Manager App.</p>
+          </div>
+        </article>
+        <article class="project-article">
+          <h3 class="project-title">To Do - React</h3>
+          <div class="project-img-wrapper">
+            <img class="project-img" src="./public/project-imgs/to-do-app.webp" alt="test logo" loading="lazy">
+            <div class="project-img-links">
+              <a class="project-img-link" href="https://github.com/ToniCoffee/react-todo" target="_blank"><img src="./public/logos/github.svg" alt="github logo" loading="lazy"></a>
+              <a class="project-img-link" href="https://tonicoffee.github.io/react-todo/" target="_blank"><img src="./public/logos/web.svg" alt="github logo" loading="lazy"></a>
+            </div>
+          </div>
+          <div class="project-description-wrapper">
+            <p class="project-description txt-ellipse">Simple To Do App.</p>
+          </div>
+        </article>
+        <article class="project-article">
+          <h3 class="project-title">Guides - Static</h3>
+          <div class="project-img-wrapper">
+            <img class="project-img" src="./public/project-imgs/guide.webp" alt="test logo" loading="lazy">
+            <div class="project-img-links">
+              <a class="project-img-link" href="https://github.com/ToniCoffee/static-guides" target="_blank"><img src="./public/logos/github.svg" alt="github logo" loading="lazy"></a>
+              <a class="project-img-link" href="https://tonicoffee.github.io/static-guides/" target="_blank"><img src="./public/logos/web.svg" alt="github logo" loading="lazy"></a>
+            </div>
+          </div>
+          <div class="project-description-wrapper">
+            <p class="project-description txt-ellipse">Documentation guides.</p>
+          </div>
+        </article>
+        <article class="project-article">
+          <h3 class="project-title">Beer Products - Static</h3>
+          <div class="project-img-wrapper">
+            <img class="project-img" src="./public/project-imgs/beer-products.webp" alt="test logo" loading="lazy">
+            <div class="project-img-links">
+              <a class="project-img-link" href="https://github.com/ToniCoffee/static-beer-products" target="_blank"><img src="./public/logos/github.svg" alt="github logo" loading="lazy"></a>
+              <a class="project-img-link" href="https://tonicoffee.github.io/static-beer-products/" target="_blank"><img src="./public/logos/web.svg" alt="github logo" loading="lazy"></a>
+            </div>
+          </div>
+          <div class="project-description-wrapper">
+            <p class="project-description txt-ellipse">Beer Products page.</p>
+          </div>
+        </article>
+        <article class="project-article">
+          <h3 class="project-title">Clock - Static</h3>
+          <div class="project-img-wrapper">
+            <img class="project-img" src="./public/project-imgs/clock.webp" alt="test logo" loading="lazy">
+            <div class="project-img-links">
+              <a class="project-img-link" href="https://github.com/ToniCoffee/static-clock" target="_blank"><img src="./public/logos/github.svg" alt="github logo" loading="lazy"></a>
+              <a class="project-img-link" href="https://tonicoffee.github.io/static-clock/" target="_blank"><img src="./public/logos/web.svg" alt="github logo" loading="lazy"></a>
+            </div>
+          </div>
+          <div class="project-description-wrapper">
+            <p class="project-description txt-ellipse">Simple clock made using html, javascript, and css.</p>
+          </div>
+        </article>
+        <article class="project-article">
+          <h3 class="project-title">Doom Game - Static</h3>
+          <div class="project-img-wrapper">
+            <img class="project-img" src="./public/project-imgs/doom.webp" alt="test logo" loading="lazy">
+            <div class="project-img-links">
+              <a class="project-img-link" href="https://github.com/ToniCoffee/static-raycast-tracing" target="_blank"><img src="./public/logos/github.svg" alt="github logo" loading="lazy"></a>
+              <a class="project-img-link" href="https://tonicoffee.github.io/static-raycast-tracing/" target="_blank"><img src="./public/logos/web.svg" alt="github logo" loading="lazy"></a>
+            </div>
+          </div>
+          <div class="project-description-wrapper">
+            <p class="project-description txt-ellipse">Doom game scene for testing purposes.</p>
+          </div>
+        </article>
+        <article class="project-article">
+          <h3 class="project-title">Make Pairs Game - Static</h3>
+          <div class="project-img-wrapper">
+            <img class="project-img" src="./public/project-imgs/make-pairs.webp" alt="test logo" loading="lazy">
+            <div class="project-img-links">
+              <a class="project-img-link" href="https://github.com/ToniCoffee/static-make-pairs" target="_blank"><img src="./public/logos/github.svg" alt="github logo" loading="lazy"></a>
+              <a class="project-img-link" href="https://tonicoffee.github.io/static-make-pairs/" target="_blank"><img src="./public/logos/web.svg" alt="github logo" loading="lazy"></a>
+            </div>
+          </div>
+          <div class="project-description-wrapper">
+            <p class="project-description txt-ellipse">Make pairs game.</p>
+          </div>
+        </article>
+        <article class="project-article">
+          <h3 class="project-title">Snake Game - Static</h3>
+          <div class="project-img-wrapper">
+            <img class="project-img" src="./public/project-imgs/snake.webp" alt="test logo" loading="lazy">
+            <div class="project-img-links">
+              <a class="project-img-link" href="https://github.com/ToniCoffee/static-snake" target="_blank"><img src="./public/logos/github.svg" alt="github logo" loading="lazy"></a>
+              <a class="project-img-link" href="https://tonicoffee.github.io/static-snake/dist/index.html" target="_blank"><img src="./public/logos/web.svg" alt="github logo" loading="lazy"></a>
+            </div>
+          </div>
+          <div class="project-description-wrapper">
+            <p class="project-description txt-ellipse">Snake game made using html, javascript, and css.</p>
+          </div>
+        </article>
+        <article class="project-article">
+          <h3 class="project-title">Tetris Game - Static</h3>
+          <div class="project-img-wrapper">
+            <img class="project-img" src="./public/project-imgs/tetris.webp" alt="test logo" loading="lazy">
+            <div class="project-img-links">
+              <a class="project-img-link" href="https://github.com/ToniCoffee/static-tetris" target="_blank"><img src="./public/logos/github.svg" alt="github logo" loading="lazy"></a>
+              <a class="project-img-link" href="https://tonicoffee.github.io/static-tetris/" target="_blank"><img src="./public/logos/web.svg" alt="github logo" loading="lazy"></a>
+            </div>
+          </div>
+          <div class="project-description-wrapper">
+            <p class="project-description txt-ellipse">Tetris game made using html, javascript, and css.</p>
+          </div>
+        </article>
+        <article class="project-article">
+          <h3 class="project-title">Casio Calculator - Static</h3>
+          <div class="project-img-wrapper">
+            <img class="project-img" src="./public/project-imgs/casio.webp" alt="test logo" loading="lazy">
+            <div class="project-img-links">
+              <a class="project-img-link" href="https://github.com/ToniCoffee/static-calculator" target="_blank"><img src="./public/logos/github.svg" alt="github logo" loading="lazy"></a>
+              <a class="project-img-link" href="https://tonicoffee.github.io/static-calculator/" target="_blank"><img src="./public/logos/web.svg" alt="github logo" loading="lazy"></a>
+            </div>
+          </div>
+          <div class="project-description-wrapper">
+            <p class="project-description txt-ellipse">Casio calculator made using html, javascript, and css.</p>
+          </div>
+        </article>
+        <article class="project-article">
+          <h3 class="project-title">Calendar - Static</h3>
+          <div class="project-img-wrapper">
+            <img class="project-img" src="./public/project-imgs/calendar.webp" alt="test logo" loading="lazy">
+            <div class="project-img-links">
+              <a class="project-img-link" href="https://github.com/ToniCoffee/static-calendar" target="_blank"><img src="./public/logos/github.svg" alt="github logo" loading="lazy"></a>
+              <a class="project-img-link" href="https://tonicoffee.github.io/static-calendar/" target="_blank"><img src="./public/logos/web.svg" alt="github logo" loading="lazy"></a>
+            </div>
+          </div>
+          <div class="project-description-wrapper">
+            <p class="project-description txt-ellipse">Calendar made using html, javascript, and css.</p>
+          </div>
+        </article> 
+      </div>
+    </div>
+  </section>
+
+  <section id="contact-section" class="contact-section">
+    <div class="wrapper">
+      <article class="contact-article">
+        <h2 class="section-title">Contact</h2>
+        <nav class="contact-info">
+          <ul>
+            <li><label for="contact-phone">Phone: </label><a id="contact-phone" href="tel:690-024-693">690-02-46-93</a></li>
+            <li><label for="contact-github">Github: </label><a id="contact-github" href="https://github.com/tonicoffee" target="_blank">https://github.com/tonicoffee</a></li>
+            <li><label for="contact-gmail">Gmail: </label><a id="contact-gmail" href="mailto:ntnlpzsgr@gmail.com" target="_blank">ntnlpzsgr@gmail.com</a></li>
+            <li><label for="contact-linkedin">Linkedin: </label><a id="contact-linkedin" href="https://www.linkedin.com/in/tonicoffee" target="_blank">https://www.linkedin.com/in/tonicoffee</a></li>
+          </ul>
+        </nav>
+      </article>
+    </div>
+  </section>
+
+  <footer id="footer" class="footer">
+    <div class="wrapper">
+      <p>Site Design: Antonio López Segura © 2023 ToniCoffee.</p>
+    </div>
+  </footer>
+</body>
+</html>

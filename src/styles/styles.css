@@ -1,0 +1,11 @@
+@import './components/theme-default.css';
+@import './components/thunder-coffee.css';
+@import './components/reset.css';
+@import './components/globals.css';
+@import './components/menu.css';
+@import './components/header.css';
+@import './components/skills.css';
+@import './components/projects.css';
+@import './components/contact.css';
+@import './components/footer.css';
+@import './components/media-queries.css';

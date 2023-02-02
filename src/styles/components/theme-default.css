@@ -1,0 +1,11 @@
+:root {
+  --text-color-primary: #555;
+  --text-color-secondary: #ddd;
+  --blue-primary: #0059ff;
+  --black-primary: #333;
+  --h1-color-primary: var(--text-color-primary);
+  --user-fix-width: 150px;
+  --user-wv-width: 40vw;
+  --user-width: min(var(--user-wv-width), var(--user-fix-width));
+  --user-half-width: calc(var(--user-width) * 0.5);
+}

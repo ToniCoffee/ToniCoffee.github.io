@@ -1,0 +1,11 @@
+body {
+  background-color: rgb(249, 251, 255);
+}
+
+.section-title {
+  width: 100%;
+  padding: 0 0 .5em 0;
+  color: #ff0055;
+  font-size: 2.5em;
+  font-style: italic;
+}
